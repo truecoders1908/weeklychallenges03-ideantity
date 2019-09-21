@@ -1,57 +1,134 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
-
-
-namespace WeeklyChallenges03
+namespace weeklyChallenges03
 {
-
     public class ChallengesSet03
     {
-            public bool ArrayContainsAFalse(bool[] vals)
+        public bool ArrayContainsAFalse(bool[] vals) => vals.Contains(false);
+
+        public bool IsSumOfOddsOdd(IEnumerable<int> numbers)
+        {
+            if (numbers == null)
             {
-                throw new NotImplementedException();
+                return false;
+            }
+            int sum = 0;
+            foreach (int value in numbers)
+            {
+                sum += value;
             }
 
-            public bool IsSumOfOddsOdd(IEnumerable<int> numbers)
+            if (sum % 2 != 0)
             {
-                throw new NotImplementedException();
+                return true;
+            }
+            else
+            {
+                return false;
             }
 
-            public bool PasswordContainsUpperLowerAndNumber(string password)
+        }
+        public bool PasswordContainsUpperLowerAndNumber(string password)
+        {
+            bool containsupper = false;
+            bool containslower = false;
+            bool containsnumber = false;
+
+            for (int i = 0; i < password.Length; i++)
             {
-                throw new NotImplementedException();
+                if (char.IsUpper(password[i]))
+                {
+                    containsupper = true;
+                }
+            }
+            for (int i = 0; i < password.Length; i++)
+            {
+                if (char.IsLower(password[i]))
+                {
+                    containslower = true;
+                }
+            }
+            foreach (char num in password)
+            {
+                if (char.IsDigit(num))
+                {
+                    containsnumber = true;
+                }
             }
 
-            public char GetFirstLetterOfString(string val)
+            if (containsnumber == true && containslower == true && containsupper == true)
             {
-                throw new NotImplementedException();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public char GetFirstLetterOfString(string val)
+        {
+            return val[0];
+        }
+
+        public char GetLastLetterOfString(string val)
+        {
+            char last = val[val.Length - 1];
+            return last;
+        }
+
+        public decimal Divide(decimal dividend, decimal divisor)
+        {
+            if (divisor != 0)
+            {
+                return dividend / divisor;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        public int LastMinusFirst(int[] nums)
+        {
+            int last = nums[nums.Length - 1];
+            return last - nums[0];
+        }
+
+        public int[] GetOddsBelow100()
+        {
+            List<int> number = new List<int>();
+            int[] odds;
+            odds = new int[49];
+
+            for (int i = 0; i < 100; i++)
+            {
+                if (i % 2 != 0)
+                {
+                    number.Add(i);
+                }
             }
 
-            public char GetLastLetterOfString(string val)
+            int[] Oddsbelow100 = number.ToArray();
+
+            return Oddsbelow100;
+        }
+
+        public void ChangeAllElementsToUppercase(string[] words)
+        {
+            int sum = 0;
+            foreach (string count in words)
             {
-                throw new NotImplementedException();
+                sum++;
             }
 
-            public decimal Divide(decimal dividend, decimal divisor)
+            for (int i = 0; i < sum; i++)
             {
-                throw new NotImplementedException();
+                words[i] = words[i].ToUpper();
             }
-
-            public int LastMinusFirst(int[] nums)
-            {
-                throw new NotImplementedException();
-            }
-
-            public int[] GetOddsBelow100()
-            {
-                throw new NotImplementedException();
-            }
-
-            public void ChangeAllElementsToUppercase(string[] words)
-            {
-                throw new NotImplementedException();
-            }
+        }
 
     }
 }
